@@ -63,12 +63,12 @@ class Dictionary:
         for _ in range(self._capacity):
             node = self._table[index]
             if node is None:
-                raise KeyError(key)
+                raise KeyError(f"Key '{key}' not found")
             if node.key_hash == key_hash and node.key == key:
                 return node.value
 
             index = (index + 1) % self._capacity
-        raise KeyError(key)
+        raise KeyError(f"Key '{key}' not found")
 
     def __len__(self) -> int:
         return self._size
